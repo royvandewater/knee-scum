@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>KneeScum</title>
+  <title>Knee Scum</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'Knee Scum', root_path, :class => 'navbar-brand' %>
 
-<%= yield %>
+      <div class="nav-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><%= link_to 'Home', root_path %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>
