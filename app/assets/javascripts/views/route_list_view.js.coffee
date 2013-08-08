@@ -1,5 +1,4 @@
 class KneeScum.RouteListView extends Backbone.View
-  className: 'col-lg-4'
   template: JST['templates/route_list']
 
   initialize: =>

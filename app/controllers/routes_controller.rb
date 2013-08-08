@@ -21,7 +21,10 @@ class RoutesController < ApplicationController
     @route = Route.new(route_params)
 
     if @route.save
-      redirect_to @route, :notice => 'Route was successfully created.'
+      respond_to do |format|
+        format.html { redirect_to @route, :notice => 'Route was successfully created.' }
+        format.json { respond_with @route }
+      end
     else
       render :action => 'new'
     end

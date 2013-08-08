@@ -12,7 +12,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', :platforms => :ruby
 
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'active_model_serializers'
 
 gem 'debugger', :group => [:development, :test]
