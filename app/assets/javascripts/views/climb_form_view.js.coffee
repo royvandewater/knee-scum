@@ -14,8 +14,9 @@ class KneeScum.ClimbFormView extends Backbone.View
 
   onChange: ($event) =>
     @model.set
-      name:       @$('[name=name]').val()
-      difficulty: @$('[name=difficulty]').val()
+      name:        @$('[name=name]').val()
+      difficulty:  @$('[name=difficulty]').val()
+      description: @$('[name=description]').val()
 
   onSubmit: ($event) =>
     $event.preventDefault()

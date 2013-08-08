@@ -36,6 +36,6 @@ class ClimbsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def climb_params
-      params.require(:climb).permit(:name, :difficulty)
+      params.require(:climb).permit(:name, :difficulty, :description)
     end
 end
