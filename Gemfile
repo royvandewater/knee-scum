@@ -15,5 +15,7 @@ gem 'jquery-rails'
 gem 'active_model_serializers'
 
 gem 'debugger', :group => [:development, :test]
+gem 'coffee-rails-source-maps', :group => [:development]
+
 gem 'sdoc', :require => false, :group => [:doc]
 

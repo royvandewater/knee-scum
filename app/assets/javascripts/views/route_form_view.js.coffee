@@ -1,6 +1,10 @@
 class KneeScum.RouteFormView extends Backbone.View
   template: JST['templates/route_form']
 
+  initialize: =>
+    @model ?= new @collection.model
+    window.c = @collection
+
   events:
     'change': 'onChange'
     'submit': 'onSubmit'
@@ -17,6 +21,6 @@ class KneeScum.RouteFormView extends Backbone.View
   onSubmit: ($event) =>
     $event.preventDefault()
     $event.stopPropagation()
-    @collection.create @model, 
+    @collection.create @model, # Performs a PATCH if model exists
       success: => 
         Backbone.history.navigate '', trigger: true

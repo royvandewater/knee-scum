@@ -32,7 +32,7 @@ class RoutesController < ApplicationController
 
   def update
     if @route.update(route_params)
-      redirect_to @route, :notice => 'Route was successfully updated.'
+      respond_with @route, :notice => 'Route was successfully updated.'
     else
       render :action => 'edit'
     end

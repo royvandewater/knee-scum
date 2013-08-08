@@ -1,0 +1,6 @@
+<div class="container">
+  <div class="row">
+    <div class="left-panel  col-lg-4"></div>
+    <div class="right-panel col-lg-8"></div>
+  </div>
+</div>
