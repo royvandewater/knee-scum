@@ -1,4 +1,15 @@
-<h1>
-  <%= @model.name %>
-  <span class="badge"><%= @model.difficulty %></span>
-</h1>
+<% if @model: %>
+  <h1>
+    <%= @model.name %>
+    <span class="badge"><%= @model.difficulty %></span>
+  </h1>
+
+  <button class="btn btn-danger delete">Delete</button>
+
+<% else: %>
+  <h1>&nbsp;</h1>
+  <div class="alert alert-danger">
+    <strong>Error:</strong>
+    Climb was not found
+  </div>
+<% end %>

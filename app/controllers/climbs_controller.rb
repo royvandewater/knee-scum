@@ -1,6 +1,6 @@
 class ClimbsController < ApplicationController
   before_action :set_climb, :only => [:show, :edit, :update, :destroy]
-  respond_to :html, :json
+  respond_to :json
 
   def index
     @climbs = Climb.all
@@ -8,39 +8,24 @@ class ClimbsController < ApplicationController
   end
 
   def show
-  end
-
-  def new
-    @climb = Climb.new
-  end
-
-  def edit
+    respond_with @climb
   end
 
   def create
     @climb = Climb.new(climb_params)
 
-    if @climb.save
-      respond_to do |format|
-        format.html { redirect_to @climb, :notice => 'Climb was successfully created.' }
-        format.json { respond_with @climb }
-      end
-    else
-      render :action => 'new'
-    end
+    @climb.save
+    respond_with @climb
   end
 
   def update
-    if @climb.update(climb_params)
-      respond_with @climb, :notice => 'Climb was successfully updated.'
-    else
-      render :action => 'edit'
-    end
+    @climb.update(climb_params)
+    respond_with @climb
   end
 
   def destroy
     @climb.destroy
-    redirect_to climbs_url, :notice => 'Climb was successfully destroyed.'
+    respond_with @climb
   end
 
   private

@@ -3,6 +3,7 @@ class KneeScum.ClimbListView extends Backbone.View
 
   initialize: =>
     @listenTo @collection, 'add', @addOne
+    @listenTo @collection, 'remove', @render
 
   render: =>
     @$el.html @template collection: @collection.toJSON()
