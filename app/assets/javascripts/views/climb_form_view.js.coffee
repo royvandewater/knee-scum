@@ -1,5 +1,5 @@
-class KneeScum.RouteFormView extends Backbone.View
-  template: JST['templates/route_form']
+class KneeScum.ClimbFormView extends Backbone.View
+  template: JST['templates/climb_form']
 
   initialize: =>
     @model ?= new @collection.model

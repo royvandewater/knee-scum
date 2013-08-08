@@ -1,20 +1,24 @@
 class KneeScum.Router extends Backbone.Router
   initialize: =>
-    @collection = new KneeScum.Routes()
+    @collection = new KneeScum.Climbs()
     @collection.fetch()
 
   routes:
-    '':    'routes_list'
-    'new': 'new_route'
+    'climbs':     'climbs_list'
+    'climbs/new': 'new_climb'
+    'climbs/:id': 'climb_show'
+    '':           'climbs_list'
 
-  routes_list: =>
+  climbs_list: =>
     @two_panel
-      left:  new KneeScum.RouteListView collection: @collection
+      left:  new KneeScum.ClimbListView collection: @collection
 
-  new_route: =>
+  new_climb: =>
     @two_panel
-      left:  new KneeScum.RouteListView collection: @collection
-      right: new KneeScum.RouteFormView collection: @collection
+      left:  new KneeScum.ClimbListView collection: @collection
+      right: new KneeScum.ClimbFormView collection: @collection
+
+  climb: =>
 
   two_panel: (options={}) =>
     @view?.remove()

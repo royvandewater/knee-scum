@@ -1,5 +1,5 @@
-class KneeScum.RouteListView extends Backbone.View
-  template: JST['templates/route_list']
+class KneeScum.ClimbListView extends Backbone.View
+  template: JST['templates/climb_list']
 
   initialize: =>
     @listenTo @collection, 'add', @addOne
@@ -10,4 +10,4 @@ class KneeScum.RouteListView extends Backbone.View
     @$el
 
   addOne: (model) =>
-    @$('ul').append new KneeScum.RouteListItemView(model: model).render()
+    @$('.list-group').append new KneeScum.ClimbListItemView(model: model).render()

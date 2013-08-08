@@ -1,5 +1,5 @@
 KneeScum::Application.routes.draw do
-  resources :routes
+  resources :climbs
 
-  root 'routes#index'
+  root 'application#main'
 end
