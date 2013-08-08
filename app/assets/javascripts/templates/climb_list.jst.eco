@@ -3,5 +3,5 @@
 <div class="list-group">
 </div>
 
-<a href="#climbs/new">New Climbs</a>
+<a href="#climbs/new" class="btn btn-default">New Climb</a>
 

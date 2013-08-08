@@ -19,3 +19,5 @@ gem 'coffee-rails-source-maps', :group => [:development]
 
 gem 'sdoc', :require => false, :group => [:doc]
 
+gem 'capistrano'
+
