@@ -1,0 +1,2 @@
+<%= @model.name %>
+<span class="badge"><%= @model.difficulty %></span>

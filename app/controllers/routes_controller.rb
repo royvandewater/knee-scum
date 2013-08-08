@@ -1,48 +1,43 @@
 class RoutesController < ApplicationController
-  before_action :set_route, only: [:show, :edit, :update, :destroy]
+  before_action :set_route, :only => [:show, :edit, :update, :destroy]
+  respond_to :html, :json
 
-  # GET /routes
   def index
     @routes = Route.all
+    respond_with @routes
   end
 
-  # GET /routes/1
   def show
   end
 
-  # GET /routes/new
   def new
     @route = Route.new
   end
 
-  # GET /routes/1/edit
   def edit
   end
 
-  # POST /routes
   def create
     @route = Route.new(route_params)
 
     if @route.save
-      redirect_to @route, notice: 'Route was successfully created.'
+      redirect_to @route, :notice => 'Route was successfully created.'
     else
-      render action: 'new'
+      render :action => 'new'
     end
   end
 
-  # PATCH/PUT /routes/1
   def update
     if @route.update(route_params)
-      redirect_to @route, notice: 'Route was successfully updated.'
+      redirect_to @route, :notice => 'Route was successfully updated.'
     else
-      render action: 'edit'
+      render :action => 'edit'
     end
   end
 
-  # DELETE /routes/1
   def destroy
     @route.destroy
-    redirect_to routes_url, notice: 'Route was successfully destroyed.'
+    redirect_to routes_url, :notice => 'Route was successfully destroyed.'
   end
 
   private

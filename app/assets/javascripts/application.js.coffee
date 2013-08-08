@@ -14,4 +14,13 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require ./bootstrap
+#= require ./underscore
+#= require ./backbone
+#= require_self
 #= require_tree .
+
+window.KneeScum = {}
+
+$ -> # Executed after all JS has been loaded
+  window.router = new window.KneeScum.Router()
+  Backbone.history.start()
