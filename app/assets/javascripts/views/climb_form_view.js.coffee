@@ -3,7 +3,6 @@ class KneeScum.ClimbFormView extends Backbone.View
 
   initialize: =>
     @model ?= new @collection.model
-    window.c = @collection
 
   events:
     'change': 'onChange'
@@ -23,4 +22,4 @@ class KneeScum.ClimbFormView extends Backbone.View
     $event.stopPropagation()
     @collection.create @model, # Performs a PATCH if model exists
       success: => 
-        Backbone.history.navigate '', trigger: true
+        Backbone.history.navigate "#/climbs/#{@model.id}", trigger: true

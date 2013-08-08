@@ -4,6 +4,7 @@
     <span class="badge"><%= @model.difficulty %></span>
   </h1>
 
+  <a class="btn btn-default" href="#climbs/<%= @model.id %>/edit">Edit</a>
   <button class="btn btn-danger delete">Delete</button>
 
 <% else: %>

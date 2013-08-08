@@ -1,23 +1,23 @@
-<h1>New Climb</h1>
+<h1><%= if @model.id then 'Edit' else 'New' %> Climb</h1>
 
 <form class="form-horizontal">
   <div class="form-group">
     <label for="name-<%= @cid %>" class="col-lg-2 control-label">Name</label>
     <div class="col-lg-10">
-      <input type="text" class="form-control" name="name" id="name-<%= @cid %>" placeholder="Name">
+      <input type="text" class="form-control" name="name" id="name-<%= @cid %>" placeholder="Name" value="<%= @model.name %>">
     </div>
   </div>
 
   <div class="form-group">
     <label for="difficulty-<%= @cid %>" class="col-lg-2 control-label">Difficulty</label>
     <div class="col-lg-10">
-      <input type="text" class="form-control" name="difficulty" id="difficulty-<%= @cid %>" placeholder="Difficulty">
+      <input type="text" class="form-control" name="difficulty" id="difficulty-<%= @cid %>" placeholder="Difficulty" value="<%= @model.difficulty %>">
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
-      <button type="submit" class="btn btn-primary">Create Climb</button>
+      <button type="submit" class="btn btn-primary">Save Climb</button>
     </div>
   </div>
 </form>
