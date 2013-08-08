@@ -10,4 +10,6 @@ class KneeScum.ClimbListView extends Backbone.View
     @$el
 
   addOne: (model) =>
-    @$('.list-group').append new KneeScum.ClimbListItemView(model: model).render()
+    view = new KneeScum.ClimbListItemView(model: model)
+    view.setActive() if model == @model
+    @$('.list-group').append view.render()

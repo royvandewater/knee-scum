@@ -4,12 +4,12 @@ class KneeScum.Router extends Backbone.Router
     @collection.fetch()
 
   routes:
-    'climbs':     'climbs_list'
+    'climbs':     'climbs'
     'climbs/new': 'new_climb'
-    'climbs/:id': 'climb_show'
-    '':           'climbs_list'
+    'climbs/:id': 'climb'
+    '':           'climbs'
 
-  climbs_list: =>
+  climbs: =>
     @two_panel
       left:  new KneeScum.ClimbListView collection: @collection
 
@@ -18,7 +18,12 @@ class KneeScum.Router extends Backbone.Router
       left:  new KneeScum.ClimbListView collection: @collection
       right: new KneeScum.ClimbFormView collection: @collection
 
-  climb: =>
+  climb: (id) =>
+    @collection.whenFetched =>
+      model = @collection.get id
+      @two_panel
+        left:  new KneeScum.ClimbListView model: model, collection: @collection
+        right: new KneeScum.ClimbView     model: model
 
   two_panel: (options={}) =>
     @view?.remove()
