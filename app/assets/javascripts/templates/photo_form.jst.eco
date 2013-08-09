@@ -1,0 +1,46 @@
+<form class="form-horizontal">
+  <div class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Photo</h4>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="title-<%= @cid %>" class="col-lg-2 control-label">Title</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" name="title" id="title-<%= @cid %>" placeholder="Title" value="<%= @model.title %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="file-<%= @cid %>" class="col-lg-2 control-label">File</label>
+            <div class="col-lg-10">
+              <input type="file" class="form-control" name="file" id="file-<%= @cid %>" >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description-<%= @cid %>" class="col-lg-2 control-label">Description</label>
+            <div class="col-lg-10">
+              <textarea class="form-control" rows="5" name="description" id="description-<%= @cid %>"><%= @model.description %></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+              <button type="submit" class="btn btn-primary">Upload and Add</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</form>
+
+
+
+

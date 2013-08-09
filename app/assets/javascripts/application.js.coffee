@@ -12,6 +12,8 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require jquery.iframe-transport
+#= require jquery.remotipart
 #= require ./bootstrap
 #= require ./underscore
 #= require ./backbone

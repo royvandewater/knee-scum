@@ -29,13 +29,13 @@ class ClimbsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_climb
-      @climb = Climb.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_climb
+    @climb = Climb.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def climb_params
-      params.require(:climb).permit(:name, :difficulty, :description)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def climb_params
+    params.require(:climb).permit(:name, :difficulty, :description)
+  end
 end

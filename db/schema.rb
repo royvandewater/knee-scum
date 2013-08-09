@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130808210709) do
+ActiveRecord::Schema.define(version: 20130809173654) do
 
   create_table "climbs", force: true do |t|
     t.string   "name"
@@ -20,5 +20,19 @@ ActiveRecord::Schema.define(version: 20130808210709) do
     t.datetime "updated_at"
     t.text     "description"
   end
+
+  create_table "photos", force: true do |t|
+    t.integer  "climb_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
+  add_index "photos", ["climb_id"], name: "index_photos_on_climb_id", using: :btree
 
 end

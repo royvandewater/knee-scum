@@ -1,4 +1,7 @@
+#= require models/climb
+
 class KneeScum.Climbs extends Backbone.Collection
+  model: KneeScum.Climb
   url: '/climbs'
 
   initialize: =>
@@ -13,4 +16,4 @@ class KneeScum.Climbs extends Backbone.Collection
     if @fetched
       cb() 
     else
-      @on 'fetched', cb
+      @once 'fetched', cb
