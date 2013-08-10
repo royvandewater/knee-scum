@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
   respond_to :json
 
   def index
-    @photos = Photo.all
+    @photos = @climb.photos.all
     respond_with @photos
   end
 
@@ -14,9 +14,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.new(photo_params)
-
-    @photo.save
+    @photo = @climb.photos.create(photo_params)
     respond_with @photo
   end
 

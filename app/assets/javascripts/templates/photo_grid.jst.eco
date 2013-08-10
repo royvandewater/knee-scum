@@ -1,3 +1,13 @@
 <h3>Photos</h3>
 
+<div class="row">
+  <% _.each @collection, (model) =>: %>
+    <div class="col-lg-3">
+      <a href="#" class="thumbnail" title="<%= model.title %>">
+        <img src="<%= model.thumbnail_url %>" alt="<%= model.title %>">
+      </a>
+    </div>
+  <% end %>
+</div>
+
 <a href="<%= @new_photo_path %>" class="btn btn-default">Add Photo</a>
