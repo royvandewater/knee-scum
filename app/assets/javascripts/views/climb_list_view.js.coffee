@@ -2,7 +2,7 @@ class KneeScum.ClimbListView extends Backbone.View
   template: JST['templates/climb_list']
 
   initialize: =>
-    @listenTo @collection, 'add', @addOne
+    @listenTo @collection, 'add', @render
     @listenTo @collection, 'remove', @render
 
   render: =>
