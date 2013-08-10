@@ -13,7 +13,7 @@ role :db,  "knee-scum.royvandewater.com", :primary => true # This is where Rails
 set :user, "deploy"
 set :deploy_to, "/home/deploy/apps/#{application}"
 
-# if you want to clean up old releases on each deploy uncomment this:
+after 'deploy:update_code', 'deploy:migrate'
 after "deploy:restart", "deploy:cleanup"
 
 # if you're still using the script/reaper helper you will need
