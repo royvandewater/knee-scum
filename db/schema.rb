@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130809173654) do
+ActiveRecord::Schema.define(version: 20130811151154) do
 
   create_table "climbs", force: true do |t|
     t.string   "name"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20130809173654) do
   create_table "photos", force: true do |t|
     t.integer  "climb_id"
     t.string   "title"
-    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "file_file_name"

@@ -3,7 +3,7 @@
 <div class="row">
   <% _.each @collection, (model) =>: %>
     <div class="col-lg-3">
-      <a href="#" class="thumbnail" title="<%= model.title %>">
+      <a href="<%= model.file_url %>" title="<%= model.title %>" class="thumbnail fancybox" data-fancybox-group="fancybox-<%= @cid %>" >
         <img src="<%= model.thumbnail_url %>" alt="<%= model.title %>">
       </a>
     </div>

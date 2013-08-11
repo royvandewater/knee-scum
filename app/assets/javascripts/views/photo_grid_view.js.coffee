@@ -6,6 +6,8 @@ class KneeScum.PhotoGridView extends Backbone.View
 
   render: =>
     @$el.html @template 
+      cid:            @cid
       new_photo_path: "##{@collection.url}/new"
       collection:     @collection.toJSON()
+    @$(".fancybox").fancybox helpers: title: type: 'over'
     @$el

@@ -1,5 +1,5 @@
 class PhotoSerializer < ActiveModel::Serializer
-  attributes :id, :file_url, :thumbnail_url, :title, :description
+  attributes :id, :file_url, :thumbnail_url, :title
 
   def file_url
     object.file.url

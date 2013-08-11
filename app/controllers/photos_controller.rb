@@ -38,7 +38,7 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.permit(:title, :description, :file)
+    params.permit(:title, :file)
   end
 
   def photo_url(photo)

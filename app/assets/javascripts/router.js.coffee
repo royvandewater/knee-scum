@@ -36,20 +36,19 @@ class KneeScum.Router extends Backbone.Router
         right: new KneeScum.ClimbView     model: model
 
   new_climb_photo: (climb_id) =>
+    @reset_views()
     @climb(climb_id)
     @collection.whenFetched =>
       photos = @collection.get(climb_id).photos
-      view   = new KneeScum.PhotoFormView collection: photos
-      $('#modal-content').html view.render()
-      view.show()
-
-  modal: (options={}) =>
-    @modal_view?.remove()
-    @modal_view = new KneeScum.ModalView options
-    $('#modal-content').html @modal_view.render()
-    @modal_view.show()
+      @modal_view   = new KneeScum.PhotoFormView collection: photos
+      $('#modal-content').html @modal_view.render()
+      @modal_view.show()
 
   two_panel: (options={}) =>
-    @view?.remove()
+    @reset_views()
     @view = new KneeScum.TwoPanelView options
     $('#main-content').html @view.render()
+
+  reset_views: =>
+    @modal_view?.remove()
+    @view?.remove()

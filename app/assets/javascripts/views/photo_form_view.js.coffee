@@ -9,13 +9,18 @@ class KneeScum.PhotoFormView extends Backbone.View
     @$el
 
   events:
-    'change': 'onChange'
-    'submit': 'onSubmit'
+    'click .close': 'onClickClose'
+    'change':       'onChange'
+    'submit':       'onSubmit'
+
+  onClickClose: ($event) =>
+    $event.preventDefault()
+    $event.stopPropagation()
+    @close()
 
   onChange: =>
     @model.set
       title:       @$('[name=title]').val()
-      description: @$('[name=description]').val()
 
   onSubmit: ($event) =>
     $event.preventDefault()
@@ -33,8 +38,7 @@ class KneeScum.PhotoFormView extends Backbone.View
       success: (data) =>
         @model.set data
         @collection.add @model
-        @remove()
-        Backbone.history.navigate @collection.url, trigger: true
+        @close()
 
   remove: =>
     @$('.modal').modal({show: false})
@@ -43,4 +47,8 @@ class KneeScum.PhotoFormView extends Backbone.View
 
   show: =>
     @$('.modal').modal()
+
+  close: =>
+    @remove()
+    Backbone.history.navigate @collection.url, trigger: true
 
