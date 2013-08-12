@@ -1,0 +1,3 @@
+<a href="<%= @photo_path %>" title="<%= @model.title %>" class="thumbnail" >
+  <img src="<%= @model.thumbnail_url %>" alt="<%= @model.title %>">
+</a>

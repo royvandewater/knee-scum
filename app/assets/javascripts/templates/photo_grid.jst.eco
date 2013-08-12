@@ -1,13 +1,6 @@
 <h3>Photos</h3>
 
-<div class="row">
-  <% _.each @collection, (model) =>: %>
-    <div class="col-lg-3">
-      <a href="<%= model.file_url %>" title="<%= model.title %>" class="thumbnail fancybox" data-fancybox-group="fancybox-<%= @cid %>" >
-        <img src="<%= model.thumbnail_url %>" alt="<%= model.title %>">
-      </a>
-    </div>
-  <% end %>
+<div class="row gallery">
 </div>
 
 <a href="<%= @new_photo_path %>" class="btn btn-default">Add Photo</a>

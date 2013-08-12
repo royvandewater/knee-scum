@@ -2,12 +2,13 @@ class KneeScum.PhotoGridView extends Backbone.View
   template: JST['templates/photo_grid']
 
   initialize: =>
-    @listenTo @collection, 'all', @render
+    @listenTo @collection, 'add', @addOne
 
   render: =>
-    @$el.html @template 
-      cid:            @cid
-      new_photo_path: "##{@collection.url}/new"
-      collection:     @collection.toJSON()
-    @$(".fancybox").fancybox helpers: title: type: 'over'
+    @$el.html @template new_photo_path: "##{@collection.url}/new"
+    @collection.each @addOne
     @$el
+
+  addOne: (model) =>
+    view = new KneeScum.PhotoThumbnailView model: model
+    @$('.gallery').append view.render()
