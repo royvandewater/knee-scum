@@ -5,6 +5,7 @@ class KneeScum.Router extends Backbone.Router
 
   routes:
     'climbs/:climb_id/photos/new': 'new_climb_photo'
+    'climbs/:climb_id/photos/:id': 'climb_photo'
     'climbs/new':                  'new_climb'
     'climbs/:id/edit':             'edit_climb'
     'climbs/:id/photos':           'climb'
@@ -21,13 +22,6 @@ class KneeScum.Router extends Backbone.Router
       left:  new KneeScum.ClimbListView collection: @collection
       right: new KneeScum.ClimbFormView collection: @collection
 
-  edit_climb: (id) =>
-    @collection.whenFetched =>
-      model = @collection.get id
-      @two_panel
-        left:  new KneeScum.ClimbListView model: model, collection: @collection
-        right: new KneeScum.ClimbFormView model: model, collection: @collection
-
   climb: (id) =>
     @collection.whenFetched =>
       model = @collection.get id
@@ -35,20 +29,25 @@ class KneeScum.Router extends Backbone.Router
         left:  new KneeScum.ClimbListView model: model, collection: @collection
         right: new KneeScum.ClimbView     model: model
 
-  new_climb_photo: (climb_id) =>
-    @reset_views()
-    @climb(climb_id)
+  edit_climb: (id) =>
     @collection.whenFetched =>
-      photos = @collection.get(climb_id).photos
-      @modal_view   = new KneeScum.PhotoFormView collection: photos
-      $('#modal-content').html @modal_view.render()
-      @modal_view.show()
+      model = @collection.get id
+      @two_panel
+        left:  new KneeScum.ClimbListView model: model, collection: @collection
+        right: new KneeScum.ClimbFormView model: model, collection: @collection
+
+  climb_photo: (climb_id, photo_id) =>
+
+  new_climb_photo: (climb_id) =>
+    @collection.whenFetched =>
+      model = @collection.get climb_id
+      @two_panel
+        left:  new KneeScum.ClimbListView model: model, collection: @collection
+        right: new KneeScum.ClimbView     model: model
+        modal: new KneeScum.PhotoFormView collection: model.photos
 
   two_panel: (options={}) =>
-    @reset_views()
+    @view?.remove()
     @view = new KneeScum.TwoPanelView options
     $('#main-content').html @view.render()
-
-  reset_views: =>
-    @modal_view?.remove()
-    @view?.remove()
+    @view.show_modal()

@@ -5,18 +5,12 @@ class KneeScum.PhotoFormView extends Backbone.View
     @model ?= new @collection.model
 
   render: =>
-    @$el.html @template model: @model
+    @$el.html @template model: @model, collection_url: "##{@collection.url}"
     @$el
 
   events:
-    'click .close': 'onClickClose'
     'change':       'onChange'
     'submit':       'onSubmit'
-
-  onClickClose: ($event) =>
-    $event.preventDefault()
-    $event.stopPropagation()
-    @close()
 
   onChange: =>
     @model.set
@@ -40,15 +34,5 @@ class KneeScum.PhotoFormView extends Backbone.View
         @collection.add @model
         @close()
 
-  remove: =>
-    @$('.modal').modal({show: false})
-    $('.modal-backdrop').remove()
-    super
-
-  show: =>
-    @$('.modal').modal()
-
   close: =>
-    @remove()
-    Backbone.history.navigate @collection.url, trigger: true
-
+    Backbone.history.navigate "##{@collection.url}", trigger: true
