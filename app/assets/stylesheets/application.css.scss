@@ -18,6 +18,32 @@ body {
 }
 
 .extra-wide {
-  width: 100%;
+  .modal-body {
+    padding: 0px;
+
+    .col-lg-12 {
+      padding-left: 7px;
+    }
+  }
+
+  .modal-footer {
+    padding: 5px 10px;
+    margin: 0;
+
+    .pager {
+      margin: 0;
+    }
+  }
 }
 
+@media (min-width: 768px) {
+  .extra-wide {
+    .modal-body {
+      padding: 10px;
+
+      .col-lg-12 {
+        padding-left: 15px;
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ class KneeScum.PhotoGalleryView extends Backbone.View
   template: JST['templates/photo_gallery']
 
   modalClass: 'extra-wide' # Used by two_panel_view
+  fillScreen: true
 
   render: =>
     @$el.html @template

@@ -23,7 +23,7 @@ class KneeScum.PhotoFormView extends Backbone.View
       headers:
         Accept: 'text/plain'
       type:     'POST'
-      data:     
+      data:
         @model.toJSON()
       files:    @$('[name=file]')
       iframe:   true
@@ -34,5 +34,5 @@ class KneeScum.PhotoFormView extends Backbone.View
         @collection.add @model
         @close()
 
-  close: =>
+close: =>
     Backbone.history.navigate "##{@collection.url}", trigger: true
