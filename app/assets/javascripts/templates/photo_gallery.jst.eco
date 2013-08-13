@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <a href="<%= @close_gallery_path %>" class="close">&times;</a>
+  <h4 class="modal-title"><%= @model.title %></h4>
+</div>
+
+<div class="modal-body">
+  <div class="row">
+    <img src="<%= @model.file_url %>" alt="<%= @model.title %>" title="<%= @model.title %>" class="col-lg-12">
+  </div>
+</div>
+
+<div class="modal-footer">
+  <ul class="pager">
+    <li class="previous"><a href="<%= @previous_photo_path %>">&larr; Previous</a></li>
+    <li class="next"><a href="<%= @next_photo_path %>">Next &rarr;</a></li>
+  </ul>
+</div>

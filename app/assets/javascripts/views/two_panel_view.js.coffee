@@ -11,6 +11,7 @@ class KneeScum.TwoPanelView extends Backbone.View
     @$('.left-panel ').html   @left?.render()
     @$('.right-panel').html   @right?.render()
     @$('.modal-content').html @modal?.render()
+    @$('.modal-dialog').addClass @modal?.modalClass
     @$el
 
   onClickCloseModal: ($event) =>
@@ -24,6 +25,7 @@ class KneeScum.TwoPanelView extends Backbone.View
   show_modal: =>
     return unless @modal?
     @$('.modal').modal().on 'hidden.bs.modal', @closeModal
+
 
   remove: =>
     $('.modal-backdrop').remove()

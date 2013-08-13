@@ -13,6 +13,9 @@ class KneeScum.Router extends Backbone.Router
     'climbs':                      'climbs'
     '':                            'climbs'
 
+  new_climb: =>
+    @collection.each this.addClimb
+
   climbs: =>
     @two_panel
       left:  new KneeScum.ClimbListView collection: @collection
@@ -37,6 +40,15 @@ class KneeScum.Router extends Backbone.Router
         right: new KneeScum.ClimbFormView model: model, collection: @collection
 
   climb_photo: (climb_id, photo_id) =>
+    @collection.whenFetched =>
+      model = @collection.get climb_id
+      photos = model.photos
+      photo  = photos.get photo_id
+
+      @two_panel
+        left:  new KneeScum.ClimbListView    model: model, collection: @collection
+        right: new KneeScum.ClimbView        model: model
+        modal: new KneeScum.PhotoGalleryView model: photo, collection: photos
 
   new_climb_photo: (climb_id) =>
     @collection.whenFetched =>
