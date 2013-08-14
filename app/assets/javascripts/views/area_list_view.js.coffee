@@ -1,7 +1,7 @@
-#= require views/climb_list_item_view
+#= require views/area_list_item_view
 
-class KneeScum.ClimbListView extends Backbone.View
-  template: JST['templates/climb_list']
+class KneeScum.AreaListView extends Backbone.View
+  template: JST['templates/area_list']
 
   initialize: =>
     @listenTo @collection, 'add', @render
@@ -13,6 +13,6 @@ class KneeScum.ClimbListView extends Backbone.View
     @$el
 
   addOne: (model) =>
-    view = new KneeScum.ClimbListItemView(model: model)
+    view = new KneeScum.AreaListItemView(model: model)
     view.setActive() if model == @model
     @$('.list-group').append view.render()

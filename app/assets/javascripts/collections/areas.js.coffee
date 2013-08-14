@@ -1,8 +1,8 @@
-#= require models/climb
+#= require models/area
 
-class KneeScum.Climbs extends Backbone.Collection
-  model: KneeScum.Climb
-  url: '/climbs'
+class KneeScum.Areas extends Backbone.Collection
+  model: KneeScum.Area
+  url: '/areas'
 
   initialize: =>
     if @size() > 0

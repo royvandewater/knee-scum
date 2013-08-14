@@ -1,7 +1,9 @@
 class KneeScum.Router extends Backbone.Router
   initialize: =>
-    @collection = new KneeScum.Climbs()
-    @collection.fetch()
+    @areas = new KneeScum.Areas()
+    @areas.fetch()
+    @climbs = new KneeScum.Climbs()
+    @climbs.fetch()
 
   routes:
     'climbs/:climb_id/photos/new': 'newClimbPhoto'
@@ -11,48 +13,58 @@ class KneeScum.Router extends Backbone.Router
     'climbs/:id/photos':           'climb'
     'climbs/:id':                  'climb'
     'climbs':                      'climbs'
+    'areas/new':                   'newArea'
     'areas':                       'areas'
     '':                            'climbs'
 
+  areas: =>
+    @twoPanel
+      left: new KneeScum.AreaListView collection: @areas
+
+  newArea: =>
+    @twoPanel
+      left:  new KneeScum.AreaListView collection: @areas
+      right: new KneeScum.AreaFormView collection: @areas
+
   climbs: =>
     @twoPanel
-      left:  new KneeScum.ClimbListView collection: @collection
+      left:  new KneeScum.ClimbListView collection: @climbs
 
   newClimb: =>
     @twoPanel
-      left:  new KneeScum.ClimbListView collection: @collection
-      right: new KneeScum.ClimbFormView collection: @collection
+      left:  new KneeScum.ClimbListView collection: @climbs
+      right: new KneeScum.ClimbFormView collection: @climbs
 
   climb: (id) =>
-    @collection.whenFetched =>
-      model = @collection.get id
+    @climbs.whenFetched =>
+      model = @climbs.get id
       @twoPanel
-        left:  new KneeScum.ClimbListView model: model, collection: @collection
+        left:  new KneeScum.ClimbListView model: model, collection: @climbs
         right: new KneeScum.ClimbView     model: model
 
   editClimb: (id) =>
-    @collection.whenFetched =>
-      model = @collection.get id
+    @climbs.whenFetched =>
+      model = @climbs.get id
       @twoPanel
-        left:  new KneeScum.ClimbListView model: model, collection: @collection
-        right: new KneeScum.ClimbFormView model: model, collection: @collection
+        left:  new KneeScum.ClimbListView model: model, collection: @climbs
+        right: new KneeScum.ClimbFormView model: model, collection: @climbs
 
   climbPhoto: (climb_id, photo_id) =>
-    @collection.whenFetched =>
-      model = @collection.get climb_id
+    @climbs.whenFetched =>
+      model = @climbs.get climb_id
       photos = model.photos
       photo  = photos.get photo_id
 
       @twoPanel
-        left:  new KneeScum.ClimbListView    model: model, collection: @collection
+        left:  new KneeScum.ClimbListView    model: model, collection: @climbs
         right: new KneeScum.ClimbView        model: model
         modal: new KneeScum.PhotoGalleryView model: photo, collection: photos
 
   newClimbPhoto: (climb_id) =>
-    @collection.whenFetched =>
-      model = @collection.get climb_id
+    @climbs.whenFetched =>
+      model = @climbs.get climb_id
       @twoPanel
-        left:  new KneeScum.ClimbListView model: model, collection: @collection
+        left:  new KneeScum.ClimbListView model: model, collection: @climbs
         right: new KneeScum.ClimbView     model: model
         modal: new KneeScum.PhotoFormView collection: model.photos
 
