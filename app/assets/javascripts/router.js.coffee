@@ -4,23 +4,20 @@ class KneeScum.Router extends Backbone.Router
     @collection.fetch()
 
   routes:
-    'climbs/:climb_id/photos/new': 'new_climb_photo'
-    'climbs/:climb_id/photos/:id': 'climb_photo'
-    'climbs/new':                  'new_climb'
-    'climbs/:id/edit':             'edit_climb'
+    'climbs/:climb_id/photos/new': 'newClimbPhoto'
+    'climbs/:climb_id/photos/:id': 'climbPhoto'
+    'climbs/new':                  'newClimb'
+    'climbs/:id/edit':             'editClimb'
     'climbs/:id/photos':           'climb'
     'climbs/:id':                  'climb'
     'climbs':                      'climbs'
     '':                            'climbs'
 
-  new_climb: =>
-    @collection.each this.addClimb
-
   climbs: =>
     @two_panel
       left:  new KneeScum.ClimbListView collection: @collection
 
-  new_climb: =>
+  newClimb: =>
     @two_panel
       left:  new KneeScum.ClimbListView collection: @collection
       right: new KneeScum.ClimbFormView collection: @collection
@@ -32,14 +29,14 @@ class KneeScum.Router extends Backbone.Router
         left:  new KneeScum.ClimbListView model: model, collection: @collection
         right: new KneeScum.ClimbView     model: model
 
-  edit_climb: (id) =>
+  editClimb: (id) =>
     @collection.whenFetched =>
       model = @collection.get id
       @two_panel
         left:  new KneeScum.ClimbListView model: model, collection: @collection
         right: new KneeScum.ClimbFormView model: model, collection: @collection
 
-  climb_photo: (climb_id, photo_id) =>
+  climbPhoto: (climb_id, photo_id) =>
     @collection.whenFetched =>
       model = @collection.get climb_id
       photos = model.photos
@@ -50,7 +47,7 @@ class KneeScum.Router extends Backbone.Router
         right: new KneeScum.ClimbView        model: model
         modal: new KneeScum.PhotoGalleryView model: photo, collection: photos
 
-  new_climb_photo: (climb_id) =>
+  newClimbPhoto: (climb_id) =>
     @collection.whenFetched =>
       model = @collection.get climb_id
       @two_panel
