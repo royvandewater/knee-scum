@@ -12,6 +12,7 @@ class KneeScum.PhotoGalleryView extends Backbone.View
   render: =>
     @$el.html @template @context()
     $(document).off('keydown').on 'keydown', @onKeypress
+    @$('img.main-photo').load => @trigger 'change'
     @trigger 'change'
     @$el
 
