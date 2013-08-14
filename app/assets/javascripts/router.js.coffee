@@ -11,28 +11,29 @@ class KneeScum.Router extends Backbone.Router
     'climbs/:id/photos':           'climb'
     'climbs/:id':                  'climb'
     'climbs':                      'climbs'
+    'areas':                       'areas'
     '':                            'climbs'
 
   climbs: =>
-    @two_panel
+    @twoPanel
       left:  new KneeScum.ClimbListView collection: @collection
 
   newClimb: =>
-    @two_panel
+    @twoPanel
       left:  new KneeScum.ClimbListView collection: @collection
       right: new KneeScum.ClimbFormView collection: @collection
 
   climb: (id) =>
     @collection.whenFetched =>
       model = @collection.get id
-      @two_panel
+      @twoPanel
         left:  new KneeScum.ClimbListView model: model, collection: @collection
         right: new KneeScum.ClimbView     model: model
 
   editClimb: (id) =>
     @collection.whenFetched =>
       model = @collection.get id
-      @two_panel
+      @twoPanel
         left:  new KneeScum.ClimbListView model: model, collection: @collection
         right: new KneeScum.ClimbFormView model: model, collection: @collection
 
@@ -42,7 +43,7 @@ class KneeScum.Router extends Backbone.Router
       photos = model.photos
       photo  = photos.get photo_id
 
-      @two_panel
+      @twoPanel
         left:  new KneeScum.ClimbListView    model: model, collection: @collection
         right: new KneeScum.ClimbView        model: model
         modal: new KneeScum.PhotoGalleryView model: photo, collection: photos
@@ -50,12 +51,12 @@ class KneeScum.Router extends Backbone.Router
   newClimbPhoto: (climb_id) =>
     @collection.whenFetched =>
       model = @collection.get climb_id
-      @two_panel
+      @twoPanel
         left:  new KneeScum.ClimbListView model: model, collection: @collection
         right: new KneeScum.ClimbView     model: model
         modal: new KneeScum.PhotoFormView collection: model.photos
 
-  two_panel: (options={}) =>
+  twoPanel: (options={}) =>
     @view?.remove()
     @view = new KneeScum.TwoPanelView options
     $('#main-content').html @view.render()
