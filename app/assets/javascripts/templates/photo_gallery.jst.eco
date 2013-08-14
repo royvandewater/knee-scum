@@ -11,7 +11,7 @@
 
 <div class="modal-footer">
   <ul class="pager">
-    <li class="previous"><a href="<%= @previous_photo_path %>">&larr; Previous</a></li>
-    <li class="next"><a href="<%= @next_photo_path %>">Next &rarr;</a></li>
+    <li class="previous"><a href="#<%= @previous_photo_path %>">&larr; Previous</a></li>
+    <li class="next"><a href="#<%= @next_photo_path %>">Next &rarr;</a></li>
   </ul>
 </div>

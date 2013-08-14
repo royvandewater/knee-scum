@@ -1,6 +1,6 @@
 <h3>Photos</h3>
 
-<div class="row gallery">
+<div class="gallery row">
 </div>
 
 <a href="<%= @new_photo_path %>" class="btn btn-default">Add Photo</a>

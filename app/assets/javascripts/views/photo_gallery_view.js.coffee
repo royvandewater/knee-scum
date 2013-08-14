@@ -4,14 +4,29 @@ class KneeScum.PhotoGalleryView extends Backbone.View
   modalClass: 'extra-wide' # Used by two_panel_view
   fillScreen: true
 
+  context: =>
+    model:               @model.toJSON()
+    close_gallery_path:  @closePath()
+    previous_photo_path: @previousPhotoPath()
+    next_photo_path:     @nextPhotoPath()
+
   render: =>
-    @$el.html @template
-      model: @model.toJSON()
-      close_gallery_path: @closePath()
-      previous_photo_path: @previousPhotoPath()
-      next_photo_path: @nextPhotoPath()
+    @$el.html @template @context()
     $(document).off('keydown').on 'keydown', @onKeypress
+    @trigger 'change'
     @$el
+
+  events:
+    'click .previous a': 'onClickPrevious'
+    'click .next a':     'onClickNext'
+
+  onClickPrevious: ($event) =>
+    $event.preventDefault()
+    @showPrevious()
+
+  onClickNext: ($event) =>
+    $event.preventDefault()
+    @showNext()
 
   onKeypress: ($event) =>
     switch $event.which
@@ -20,23 +35,37 @@ class KneeScum.PhotoGalleryView extends Backbone.View
         @close()
       when 37 # Left Arrow
         $event.preventDefault()
-        Backbone.history.navigate @previousPhotoPath(), trigger: true
+        @showPrevious()
       when 39 # Right Arrow
         $event.preventDefault()
-        Backbone.history.navigate @nextPhotoPath(), trigger: true
+        @showNext()
+
+  showPrevious: =>
+    Backbone.history.navigate @previousPhotoPath()
+    @model = @previousPhoto()
+    @render()
+
+  showNext: =>
+    Backbone.history.navigate @nextPhotoPath()
+    @model = @nextPhoto()
+    @render()
 
   close: =>
     Backbone.history.navigate @closePath(), trigger: true
 
   closePath: =>
-    "##{@collection.url}"
+    "#{@collection.url}"
+
+  nextPhoto: =>
+    @collection.after @model
 
   nextPhotoPath: =>
-    index = (@collection.indexOf(@model) + 1) % @collection.size()
-    nextPhotoId = @collection.at(index).id
-    "##{@collection.url}/#{nextPhotoId}"
+    nextPhotoId = @nextPhoto().id
+    "#{@collection.url}/#{nextPhotoId}"
+
+  previousPhoto: =>
+    @collection.before @model
 
   previousPhotoPath: =>
-    index = (@collection.indexOf(@model) + (@collection.size() - 1)) % @collection.size()
-    previousPhotoId = @collection.at(index).id
-    "##{@collection.url}/#{previousPhotoId}"
+    previousPhotoId = @previousPhoto().id
+    "#{@collection.url}/#{previousPhotoId}"
