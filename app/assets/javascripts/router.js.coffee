@@ -10,7 +10,8 @@ class KneeScum.Router extends Backbone.Router
     'areas/:area_id/climbs/:id/edit':             'areaClimbEdit'
     'areas/:area_id/climbs/:id':                  'areaClimb'
     'areas/:area_id/climbs':                      'areaClimbs'
-    'areas/new':                                  'newArea'
+    'areas/:area_id/edit':                        'areaEdit'
+    'areas/new':                                  'areaNew'
     'areas':                                      'areas'
     '':                                           'areas'
 
@@ -18,10 +19,17 @@ class KneeScum.Router extends Backbone.Router
     @twoPanel
       left: new KneeScum.AreaListView collection: @areas
 
-  newArea: =>
+  areaNew: =>
     @twoPanel
       left:  new KneeScum.AreaListView collection: @areas
       right: new KneeScum.AreaFormView collection: @areas
+
+  areaEdit: (areaId) =>
+    @areas.whenFetched =>
+      area = @areas.get areaId
+      @twoPanel
+        left:  new KneeScum.AreaListView collection: @areas, selected_area: area
+        right: new KneeScum.AreaFormView collection: @areas, model: area
 
   areaClimbs: (areaId) =>
     @areas.whenFetched =>

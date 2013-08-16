@@ -8,3 +8,8 @@ class KneeScum.Photos extends Backbone.Collection
 
   before: (photo) =>
     @at ((@indexOf(photo) + (@size() - 1)) % @size())
+
+  build: =>
+    model = new @model
+    model.urlRoot = @url
+    model

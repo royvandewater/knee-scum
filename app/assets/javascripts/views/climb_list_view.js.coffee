@@ -11,6 +11,7 @@ class KneeScum.ClimbListView extends Backbone.View
     model:         @model.toJSON()
     collection:    @collection.toJSON()
     new_climb_url: @areaClimbNewUrl()
+    edit_area_url: @areaEditUrl()
 
   render: =>
     @$el.html @template @context()
@@ -18,7 +19,12 @@ class KneeScum.ClimbListView extends Backbone.View
     @$el
 
   events: =>
-    'click .new': 'onClickNew'
+    'click .edit': 'onClickEdit'
+    'click .new':  'onClickNew'
+
+  onClickEdit: ($event) =>
+    $event.preventDefault()
+    Backbone.history.navigate @areaEditUrl(), trigger: true
 
   onClickNew: ($event) =>
     $event.preventDefault()
@@ -28,6 +34,9 @@ class KneeScum.ClimbListView extends Backbone.View
     view = new KneeScum.ClimbListItemView(model: model)
     view.setActive() if model == @selected_climb
     @$('.list-group').append view.render()
+
+  areaEditUrl: =>
+    KneeScum.Paths.areaEdit @model.get('id')
 
   areaClimbNewUrl: =>
     KneeScum.Paths.areaClimbNew @model.get('id')

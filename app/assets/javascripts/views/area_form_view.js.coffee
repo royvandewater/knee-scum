@@ -2,7 +2,7 @@ class KneeScum.AreaFormView extends Backbone.View
   template: JST['templates/area_form']
 
   initialize: =>
-    @model ?= new @collection.model
+    @model ?= @collection.build()
 
   events:
     'change': 'onChange'
@@ -19,9 +19,7 @@ class KneeScum.AreaFormView extends Backbone.View
   onSubmit: ($event) =>
     $event.preventDefault()
     $event.stopPropagation()
-    @collection.create @model, # Performs a PATCH if model exists
+    @model.save {},
       success: (data) =>
-        @model.set data
+        @collection.add @model
         Backbone.history.navigate KneeScum.Paths.areaClimbs(@model.id), trigger: true
-
-

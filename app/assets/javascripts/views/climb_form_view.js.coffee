@@ -2,7 +2,7 @@ class KneeScum.ClimbFormView extends Backbone.View
   template: JST['templates/climb_form']
 
   initialize: =>
-    @model ?= new @collection.model
+    @model ?= @collection.build()
 
   events:
     'change': 'onChange'
@@ -23,7 +23,6 @@ class KneeScum.ClimbFormView extends Backbone.View
     $event.stopPropagation()
     @collection.create @model, # Performs a PATCH if model exists
       success: =>
-        console.log @model.toJSON()
         Backbone.history.navigate @areaClimbUrl(), trigger: true
 
   areaClimbUrl: =>

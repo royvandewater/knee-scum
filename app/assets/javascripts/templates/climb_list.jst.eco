@@ -1,4 +1,7 @@
-<h1><%= @model.name %></h1>
+<h1>
+  <%= @model.name %>
+  <small><a href="<%= @edit_area_url %>" class="edit">edit</a></small>
+</h1>
 
 <div class="list-group">
 </div>

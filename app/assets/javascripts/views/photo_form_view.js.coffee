@@ -2,7 +2,7 @@ class KneeScum.PhotoFormView extends Backbone.View
   template: JST['templates/photo_form']
 
   initialize: (climb: @climb) =>
-    @model ?= new @collection.model
+    @model ?= @collection.build()
 
   context: =>
     model:          @model.toJSON()

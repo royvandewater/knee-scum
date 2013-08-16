@@ -3,7 +3,7 @@
 class KneeScum.AreaListView extends Backbone.View
   template: JST['templates/area_list']
 
-  initialize: =>
+  initialize: (selected_area: @selected_area) =>
     @listenTo @collection, 'add', @render
     @listenTo @collection, 'remove', @render
 
@@ -24,6 +24,7 @@ class KneeScum.AreaListView extends Backbone.View
 
   addOne: (model) =>
     view = new KneeScum.AreaListItemView(model: model)
+    view.setActive() if model == @selected_area
     @$('.list-group').append view.render()
 
   areaNewUrl: =>

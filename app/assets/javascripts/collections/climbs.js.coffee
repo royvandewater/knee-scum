@@ -17,3 +17,8 @@ class KneeScum.Climbs extends Backbone.Collection
       cb()
     else
       @once 'fetched', cb
+
+  build: =>
+    model = new @model
+    model.urlRoot = @url
+    model
