@@ -1,9 +1,14 @@
 KneeScum::Application.routes.draw do
-  resources :areas
-
-  resources :climbs do
-    resources :photos
+  namespace :api do
+    namespace :v1 do
+      resources :areas do
+        resources :climbs do
+          resources :photos
+        end
+      end
+    end
   end
 
   root 'application#main'
+  get  '*url', :to => 'application#main'
 end

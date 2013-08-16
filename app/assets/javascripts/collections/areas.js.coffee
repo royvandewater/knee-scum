@@ -2,7 +2,7 @@
 
 class KneeScum.Areas extends Backbone.Collection
   model: KneeScum.Area
-  url: '/areas'
+  url: '/api/v1/areas'
 
   initialize: =>
     if @size() > 0

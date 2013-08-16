@@ -5,9 +5,9 @@ class KneeScum.PhotoGalleryView extends Backbone.View
 
   context: =>
     model:               @model.toJSON()
-    close_gallery_path:  @closePath()
-    previous_photo_path: @previousPhotoPath()
-    next_photo_path:     @nextPhotoPath()
+    close_gallery_url:   @areaClimbUrl()
+    previous_photo_url:  @previousPhotoUrl()
+    next_photo_url:      @nextPhotoUrl()
 
   render: =>
     @$el.html @template @context()
@@ -17,8 +17,13 @@ class KneeScum.PhotoGalleryView extends Backbone.View
     @$el
 
   events:
+    'click .close':      'onClickClose'
     'click .previous a': 'onClickPrevious'
     'click .next a':     'onClickNext'
+
+  onClickClose: ($event) =>
+    $event.preventDefault()
+    Backbone.history.navigate @areaClimbUrl(), trigger: true
 
   onClickPrevious: ($event) =>
     $event.preventDefault()
@@ -41,31 +46,31 @@ class KneeScum.PhotoGalleryView extends Backbone.View
         @showNext()
 
   showPrevious: =>
-    Backbone.history.navigate @previousPhotoPath()
+    Backbone.history.navigate @previousPhotoUrl()
     @model = @previousPhoto()
     @render()
 
   showNext: =>
-    Backbone.history.navigate @nextPhotoPath()
+    Backbone.history.navigate @nextPhotoUrl()
     @model = @nextPhoto()
     @render()
 
   close: =>
-    Backbone.history.navigate @closePath(), trigger: true
+    Backbone.history.navigate @areaClimbUrl(), trigger: true
 
-  closePath: =>
-    "#{@collection.url}"
+  areaClimbUrl: =>
+    KneeScum.Paths.areaClimb @model.get('area_id'), @model.get('climb_id')
 
   nextPhoto: =>
     @collection.after @model
 
-  nextPhotoPath: =>
+  nextPhotoUrl: =>
     nextPhotoId = @nextPhoto().id
-    "#{@collection.url}/#{nextPhotoId}"
+    KneeScum.Paths.areaClimbPhotoGallery @model.get('area_id'), @model.get('climb_id'), nextPhotoId
 
   previousPhoto: =>
     @collection.before @model
 
-  previousPhotoPath: =>
+  previousPhotoUrl: =>
     previousPhotoId = @previousPhoto().id
-    "#{@collection.url}/#{previousPhotoId}"
+    KneeScum.Paths.areaClimbPhotoGallery @model.get('area_id'), @model.get('climb_id'), previousPhotoId

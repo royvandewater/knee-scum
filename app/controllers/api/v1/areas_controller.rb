@@ -1,4 +1,4 @@
-class AreasController < ApplicationController
+class Api::V1::AreasController < ApplicationController
   before_action :set_area, :only => [:show, :edit, :update, :destroy]
   respond_to :json
 

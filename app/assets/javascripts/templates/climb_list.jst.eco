@@ -1,7 +1,7 @@
-<h1>Buffalo Park</h1>
+<h1><%= @model.name %></h1>
 
 <div class="list-group">
 </div>
 
-<a href="#climbs/new" class="btn btn-default">New Climb</a>
+<a href="<%= @new_climb_url %>" class="btn btn-default new">New Climb</a>
 

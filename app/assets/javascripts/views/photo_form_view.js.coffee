@@ -1,16 +1,25 @@
 class KneeScum.PhotoFormView extends Backbone.View
   template: JST['templates/photo_form']
 
-  initialize: =>
+  initialize: (climb: @climb) =>
     @model ?= new @collection.model
 
+  context: =>
+    model:          @model.toJSON()
+    close_form_url: @areaClimbUrl()
+
   render: =>
-    @$el.html @template model: @model, collection_url: "##{@collection.url}"
+    @$el.html @template @context()
     @$el
 
   events:
+    'click .close': 'onClickClose'
     'change':       'onChange'
     'submit':       'onSubmit'
+
+  onClickClose: ($event) =>
+    $event.preventDefault()
+    @close()
 
   onChange: =>
     @model.set
@@ -18,7 +27,6 @@ class KneeScum.PhotoFormView extends Backbone.View
 
   onSubmit: ($event) =>
     $event.preventDefault()
-    $event.stopPropagation()
     $.ajax "#{@collection.url}.json",
       headers:
         Accept: 'text/plain'
@@ -34,5 +42,8 @@ class KneeScum.PhotoFormView extends Backbone.View
         @collection.add @model
         @close()
 
-close: =>
-    Backbone.history.navigate "##{@collection.url}", trigger: true
+  close: =>
+    Backbone.history.navigate @areaClimbUrl(), trigger: true
+
+  areaClimbUrl: =>
+    KneeScum.Paths.areaClimb @climb.get('area_id'), @climb.get('id')

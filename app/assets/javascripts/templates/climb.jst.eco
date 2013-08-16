@@ -9,7 +9,7 @@
   <div class="container panel photos-container">
   </div>
 
-  <a class="btn btn-default" href="#climbs/<%= @model.id %>/edit">Edit</a>
+  <a class="btn btn-default edit" href="<%= @edit_url %>">Edit</a>
   <button class="btn btn-danger delete">Delete</button>
 
 <% else: %>

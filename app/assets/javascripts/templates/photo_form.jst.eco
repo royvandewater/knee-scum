@@ -1,6 +1,6 @@
 <form class="form-horizontal">
   <div class="modal-header">
-    <a href="<%= @collection_url %>" class="close">&times;</a>
+    <a href="<%= @close_form_url %>" class="close">&times;</a>
     <h4 class="modal-title">Add Photo</h4>
   </div>
 

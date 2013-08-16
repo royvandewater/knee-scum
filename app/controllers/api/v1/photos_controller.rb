@@ -1,4 +1,4 @@
-class PhotosController < ApplicationController
+class Api::V1::PhotosController < ApplicationController
   before_action :set_climb
   before_action :set_photo, :only => [:show, :edit, :update, :destroy]
   protect_from_forgery :with => :null_session
@@ -30,7 +30,7 @@ class PhotosController < ApplicationController
 
   private
   def set_climb
-    @climb = Climb.find(params[:climb_id])
+    @climb = Climb.find_by :area_id => params[:area_id], :id => params[:climb_id]
   end
 
   def set_photo
@@ -42,6 +42,6 @@ class PhotosController < ApplicationController
   end
 
   def photo_url(photo)
-    climb_photo_path @climb, photo
+    api_v1_area_climb_photo_url @climb.area_id, @climb.id, photo.id
   end
 end

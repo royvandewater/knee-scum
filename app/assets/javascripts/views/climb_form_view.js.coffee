@@ -22,5 +22,9 @@ class KneeScum.ClimbFormView extends Backbone.View
     $event.preventDefault()
     $event.stopPropagation()
     @collection.create @model, # Performs a PATCH if model exists
-      success: => 
-        Backbone.history.navigate "#/climbs/#{@model.id}", trigger: true
+      success: =>
+        console.log @model.toJSON()
+        Backbone.history.navigate @areaClimbUrl(), trigger: true
+
+  areaClimbUrl: =>
+    KneeScum.Paths.areaClimb @model.get('area_id'), @model.get('id')

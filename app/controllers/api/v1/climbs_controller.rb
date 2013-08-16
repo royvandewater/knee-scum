@@ -1,9 +1,10 @@
-class ClimbsController < ApplicationController
+class Api::V1::ClimbsController < ApplicationController
+  before_action :set_area
   before_action :set_climb, :only => [:show, :edit, :update, :destroy]
   respond_to :json
 
   def index
-    @climbs = Climb.all
+    @climbs = @area.climbs.includes :photos
     respond_with @climbs
   end
 
@@ -12,14 +13,14 @@ class ClimbsController < ApplicationController
   end
 
   def create
-    @climb = Climb.new(climb_params)
+    @climb = @area.climbs.build climb_params
 
     @climb.save
     respond_with @climb
   end
 
   def update
-    @climb.update(climb_params)
+    @climb.update climb_params
     respond_with @climb
   end
 
@@ -29,13 +30,19 @@ class ClimbsController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_climb
-    @climb = Climb.find(params[:id])
+  def set_area
+    @area = Area.find params[:area_id]
   end
 
-  # Only allow a trusted parameter "white list" through.
+  def set_climb
+    @climb = @area.climbs.find params[:id]
+  end
+
   def climb_params
     params.require(:climb).permit(:name, :difficulty, :description)
+  end
+
+  def climb_url(climb)
+    api_v1_area_climb_url @area, climb
   end
 end

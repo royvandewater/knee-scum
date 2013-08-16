@@ -5,10 +5,20 @@ class KneeScum.ClimbListItemView extends Backbone.View
 
   render: =>
     @$el.addClass('active') if @active
-    @$el.attr href: "#climbs/#{@model.id}"
+    @$el.attr href: @areaClimbUrl()
     @$el.html @template model: @model.toJSON()
     @$el
+
+  events:
+    'click': 'onClick'
+
+  onClick: ($event) =>
+    $event.preventDefault()
+    Backbone.history.navigate @areaClimbUrl(), trigger: true
 
   setActive: =>
     @active = true
     @render()
+
+  areaClimbUrl: =>
+    KneeScum.Paths.areaClimb @model.get('area_id'), @model.get('id')

@@ -3,4 +3,4 @@
 <div class="gallery row">
 </div>
 
-<a href="<%= @new_photo_path %>" class="btn btn-default">Add Photo</a>
+<a href="<%= @new_photo_path %>" class="btn btn-default new">Add Photo</a>

@@ -34,7 +34,7 @@ class KneeScum.TwoPanelView extends Backbone.View
     super
 
   adjustModalSize: =>
-    return unless @modal.fillScreen
+    return unless @modal?.fillScreen
 
     if @$('img.main-photo').width() # image has loaded yet
       @fillScreenWithModal()

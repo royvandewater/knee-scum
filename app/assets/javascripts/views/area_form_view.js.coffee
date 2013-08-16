@@ -22,4 +22,4 @@ class KneeScum.AreaFormView extends Backbone.View
     $event.stopPropagation()
     @collection.create @model, # Performs a PATCH if model exists
       success: =>
-        Backbone.history.navigate "areas/#{@model.id}", trigger: true
+        Backbone.history.navigate "areas/#{@model.id}/climbs", trigger: true
