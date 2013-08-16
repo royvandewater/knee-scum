@@ -15,11 +15,13 @@ class KneeScum.AreaFormView extends Backbone.View
   onChange: ($event) =>
     @model.set
       name:        @$('[name=name]').val()
-      description: @$('[name=description]').val()
 
   onSubmit: ($event) =>
     $event.preventDefault()
     $event.stopPropagation()
     @collection.create @model, # Performs a PATCH if model exists
-      success: =>
-        Backbone.history.navigate "areas/#{@model.id}/climbs", trigger: true
+      success: (data) =>
+        @model.set data
+        Backbone.history.navigate KneeScum.Paths.areaClimbs(@model.id), trigger: true
+
+

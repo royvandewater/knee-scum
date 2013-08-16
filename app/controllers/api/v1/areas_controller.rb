@@ -29,12 +29,14 @@ class Api::V1::AreasController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+  def area_url(area)
+    api_v1_area_url area
+  end
+
   def set_area
     @area = Area.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def area_params
     params.require(:area).permit(:name, :description)
   end

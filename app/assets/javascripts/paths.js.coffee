@@ -1,5 +1,7 @@
 class KneeScum.Paths
 
+  @areaNew: => "/areas/new"
+
   @areaClimbs:    (areaId)          => "/areas/#{areaId}/climbs"
   @areaClimbNew:  (areaId)          => "/areas/#{areaId}/climbs/new"
   @areaClimb:     (areaId, climbId) => "/areas/#{areaId}/climbs/#{climbId}"
