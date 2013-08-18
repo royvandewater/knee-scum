@@ -8,7 +8,7 @@ class KneeScum.AreaListView extends Backbone.View
     @listenTo @collection, 'remove', @render
 
   context: =>
-    new_area_url: @areaNewUrl()
+    new_area_path: @areaNewPath()
 
   render: =>
     @$el.html @template @context()
@@ -20,12 +20,12 @@ class KneeScum.AreaListView extends Backbone.View
 
   onClickNew: ($event) =>
     $event.preventDefault()
-    Backbone.history.navigate @areaNewUrl(), trigger: true
+    Backbone.history.navigate @areaNewPath(), trigger: true
 
   addOne: (model) =>
     view = new KneeScum.AreaListItemView(model: model)
     view.setActive() if model == @selected_area
     @$('.list-group').append view.render()
 
-  areaNewUrl: =>
+  areaNewPath: =>
     KneeScum.Paths.areaNew()

@@ -4,7 +4,7 @@ class KneeScum.PhotoThumbnailView extends Backbone.View
 
   context: =>
     model: @model.toJSON()
-    photo_gallery_url: @photoGalleryUrl()
+    photo_gallery_path: @photoGalleryPath()
 
   render: =>
     @$el.html @template @context()
@@ -15,8 +15,8 @@ class KneeScum.PhotoThumbnailView extends Backbone.View
 
   onClickThumbnail: ($event) =>
     $event.preventDefault()
-    Backbone.history.navigate @photoGalleryUrl(), trigger: true
+    Backbone.history.navigate @photoGalleryPath(), trigger: true
 
 
-  photoGalleryUrl: =>
+  photoGalleryPath: =>
     KneeScum.Paths.areaClimbPhotoGallery @model.get('area_id'), @model.get('climb_id'), @model.get('id')

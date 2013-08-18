@@ -6,7 +6,7 @@ class KneeScum.ClimbView extends Backbone.View
 
   context: =>
     model: @model.toJSON()
-    edit_url: @areaClimbsEditUrl()
+    edit_path: @areaClimbsEditPath()
 
   render: =>
     @$el.html @template @context()
@@ -18,7 +18,7 @@ class KneeScum.ClimbView extends Backbone.View
 
   onClickEdit: ($event) =>
     $event.preventDefault()
-    Backbone.history.navigate @areaClimbsEditUrl(), trigger: true
+    Backbone.history.navigate @areaClimbsEditPath(), trigger: true
 
-  areaClimbsEditUrl: =>
+  areaClimbsEditPath: =>
     KneeScum.Paths.areaClimbEdit @model.get('area_id'), @model.get('id')

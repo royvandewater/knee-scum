@@ -5,8 +5,8 @@ class KneeScum.PhotoFormView extends Backbone.View
     @model ?= @collection.build()
 
   context: =>
-    model:          @model.toJSON()
-    close_form_url: @areaClimbUrl()
+    model:           @model.toJSON()
+    close_form_path: @areaClimbPath()
 
   render: =>
     @$el.html @template @context()
@@ -43,7 +43,7 @@ class KneeScum.PhotoFormView extends Backbone.View
         @close()
 
   close: =>
-    Backbone.history.navigate @areaClimbUrl(), trigger: true
+    Backbone.history.navigate @areaClimbPath(), trigger: true
 
-  areaClimbUrl: =>
+  areaClimbPath: =>
     KneeScum.Paths.areaClimb @climb.get('area_id'), @climb.get('id')

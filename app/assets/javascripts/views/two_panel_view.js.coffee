@@ -27,6 +27,7 @@ class KneeScum.TwoPanelView extends Backbone.View
   show_modal: =>
     return unless @modal?
     @$('.modal').modal().on 'hidden.bs.modal', @closeModal
+    @listenTo @modal, 'closeme', => @$('.modal').modal 'hide'
     @adjustModalSize()
 
   remove: =>

@@ -1,10 +1,10 @@
 <h1>
   <%= @model.name %>
-  <small><a href="<%= @edit_area_url %>" class="edit">edit</a></small>
+  <small><a href="<%= @edit_area_path %>" class="edit">edit</a></small>
 </h1>
 
 <div class="list-group">
 </div>
 
-<a href="<%= @new_climb_url %>" class="btn btn-default new">Add Climb</a>
+<a href="<%= @new_climb_path %>" class="btn btn-default new">Add Climb</a>
 
