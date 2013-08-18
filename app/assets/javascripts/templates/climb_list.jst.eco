@@ -6,5 +6,5 @@
 <div class="list-group">
 </div>
 
-<a href="<%= @new_climb_url %>" class="btn btn-default new">New Climb</a>
+<a href="<%= @new_climb_url %>" class="btn btn-default new">Add Climb</a>
 

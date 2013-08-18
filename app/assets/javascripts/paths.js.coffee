@@ -1,4 +1,5 @@
 class KneeScum.Paths
+  @root: => '/'
 
   @areas:             => "/areas"
   @areaNew:           => "/areas/new"

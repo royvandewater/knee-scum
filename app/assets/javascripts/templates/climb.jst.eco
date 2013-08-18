@@ -2,16 +2,13 @@
   <h1>
     <%= @model.name %>
     <span class="badge"><%= @model.difficulty %></span>
+    <small><a class="edit" href="<%= @edit_url %>">Edit</a></small>
   </h1>
 
   <p><%= @model.description %></p>
 
   <div class="container panel photos-container">
   </div>
-
-  <a class="btn btn-default edit" href="<%= @edit_url %>">Edit</a>
-  <button class="btn btn-danger delete">Delete</button>
-
 <% else: %>
   <h1>&nbsp;</h1>
   <div class="alert alert-danger">

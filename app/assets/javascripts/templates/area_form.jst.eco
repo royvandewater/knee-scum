@@ -18,7 +18,7 @@
     </div>
     <div class="col-lg-2">
       <% if @model.id : %>
-        <button href="#" class="btn btn-danger delete">Delete Area</button>
+        <button href="#" class="btn btn-danger delete pull-right">Delete Area</button>
       <% end %>
     </div>
   </div>

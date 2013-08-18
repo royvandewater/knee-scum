@@ -23,8 +23,13 @@
   </div>
 
   <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
+    <div class="col-lg-offset-2 col-lg-8">
       <button type="submit" class="btn btn-primary">Save Climb</button>
+    </div>
+    <div class="col-lg-2">
+      <% if @model.id : %>
+        <button class="btn btn-danger delete pull-right">Delete Climb</button>
+      <% end %>
     </div>
   </div>
 </form>

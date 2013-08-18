@@ -3,5 +3,5 @@
 <div class="list-group">
 </div>
 
-<a href="<%= @new_area_url %>" class="btn btn-default new">New Area</a>
+<a href="<%= @new_area_url %>" class="btn btn-default new">Add Area</a>
 

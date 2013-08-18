@@ -1,0 +1,3 @@
+<div class="container">
+  <a href="<%= @root_path %>" class="navbar-brand">Knee Scum</a>
+</div>

@@ -5,12 +5,19 @@ class KneeScum.ClimbFormView extends Backbone.View
     @model ?= @collection.build()
 
   events:
-    'change': 'onChange'
-    'submit': 'onSubmit'
+    'click .delete' : 'onClickDelete'
+    'change'        : 'onChange'
+    'submit'        : 'onSubmit'
 
   render: =>
     @$el.html @template model: @model.toJSON(), cid: @cid
     @$el
+
+  onClickDelete: =>
+    if confirm 'Are you sure?'
+      @model.destroy
+        success: =>
+          Backbone.history.navigate @areaClimbsUrl(), trigger: true
 
   onChange: ($event) =>
     @model.set
@@ -27,3 +34,6 @@ class KneeScum.ClimbFormView extends Backbone.View
 
   areaClimbUrl: =>
     KneeScum.Paths.areaClimb @model.get('area_id'), @model.get('id')
+
+  areaClimbsUrl: =>
+    KneeScum.Paths.areaClimbs @model.get('area_id')
