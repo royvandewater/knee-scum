@@ -13,8 +13,13 @@
   </div>
 
   <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
+    <div class="col-lg-offset-2 col-lg-8">
       <button type="submit" class="btn btn-primary">Save Area</button>
+    </div>
+    <div class="col-lg-2">
+      <% if @model.id : %>
+        <button href="#" class="btn btn-danger delete">Delete Area</button>
+      <% end %>
     </div>
   </div>
 </form>

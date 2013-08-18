@@ -4,13 +4,26 @@ class KneeScum.AreaFormView extends Backbone.View
   initialize: =>
     @model ?= @collection.build()
 
-  events:
-    'change': 'onChange'
-    'submit': 'onSubmit'
+  context: =>
+    cid:   @cid
+    model: @model.toJSON()
+
 
   render: =>
     @$el.html @template model: @model.toJSON(), cid: @cid
     @$el
+
+  events:
+    'click .delete': 'onClickDelete'
+    'change':        'onChange'
+    'submit':        'onSubmit'
+
+  onClickDelete: ($event) =>
+    $event.preventDefault()
+    if confirm 'Are you sure?'
+      @model.destroy
+        success: =>
+          Backbone.history.navigate KneeScum.Paths.areas(), trigger: true
 
   onChange: ($event) =>
     @model.set
