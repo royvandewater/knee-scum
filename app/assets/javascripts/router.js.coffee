@@ -40,6 +40,7 @@ class KneeScum.Router extends Backbone.Router
       climbs.fetch()
       @twoPanel
         left:  new KneeScum.ClimbListView collection: climbs, model: area
+        right: new KneeScum.AreaView model: area
 
   areaClimbNew: (areaId) =>
     @areas.whenFetched =>

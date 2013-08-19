@@ -3,11 +3,12 @@ class KneeScum.AreaFormView extends Backbone.View
 
   initialize: =>
     @model ?= @collection.build()
+    @listenTo @model, 'destroy', @close
+    @listenTo @model, 'sync',    @navigateToArea
 
   context: =>
     cid:   @cid
     model: @model.toJSON()
-
 
   render: =>
     @$el.html @template model: @model.toJSON(), cid: @cid
@@ -15,24 +16,23 @@ class KneeScum.AreaFormView extends Backbone.View
 
   events:
     'click .delete': 'onClickDelete'
-    'change':        'onChange'
     'submit':        'onSubmit'
 
   onClickDelete: ($event) =>
     $event.preventDefault()
-    if confirm 'Are you sure?'
-      @model.destroy
-        success: =>
-          Backbone.history.navigate KneeScum.Paths.areas(), trigger: true
-
-  onChange: ($event) =>
-    @model.set
-      name:        @$('[name=name]').val()
+    @model.destroy() if confirm 'Are you sure?'
 
   onSubmit: ($event) =>
     $event.preventDefault()
     $event.stopPropagation()
-    @model.save {},
-      success: (data) =>
-        @collection.add @model
-        Backbone.history.navigate KneeScum.Paths.areaClimbs(@model.id), trigger: true
+    @model.save @formData()
+
+  formData: =>
+    @model.set
+      name: @$('[name=name]').val()
+
+  close: =>
+    Backbone.history.navigate KneeScum.Paths.areas(), trigger: true
+
+  navigateToArea: =>
+    Backbone.history.navigate KneeScum.Paths.areaClimbs(@model.id), trigger: true
