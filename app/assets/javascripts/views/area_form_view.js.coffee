@@ -3,7 +3,7 @@ class KneeScum.AreaFormView extends Backbone.View
 
   initialize: =>
     @model ?= @collection.build()
-    @listenTo @model, 'destroy', @close
+    @listenTo @model, 'destroy', @navigateToAreas
     @listenTo @model, 'sync',    @navigateToArea
 
   context: =>
@@ -28,11 +28,10 @@ class KneeScum.AreaFormView extends Backbone.View
     @model.save @formData()
 
   formData: =>
-    @model.set
-      name: @$('[name=name]').val()
-
-  close: =>
-    Backbone.history.navigate KneeScum.Paths.areas(), trigger: true
+    name: @$('[name=name]').val()
 
   navigateToArea: =>
     Backbone.history.navigate KneeScum.Paths.areaClimbs(@model.id), trigger: true
+
+  navigateToAreas: =>
+    Backbone.history.navigate KneeScum.Paths.areas(), trigger: true

@@ -2,7 +2,9 @@
   <h1>
     <%= @model.name %>
     <span class="badge"><%= @model.difficulty %></span>
-    <small><a class="edit" href="<%= @edit_path %>">Edit</a></small>
+    <small>
+      <a href="<%= @edit_area_path %>" class="edit glyphicon glyphicon-pencil"></a>
+    </small>
   </h1>
 
   <p><%= @model.description %></p>
