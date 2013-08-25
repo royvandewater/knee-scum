@@ -1,4 +1,5 @@
 class Api::V1::ClimbsController < ApplicationController
+  before_filter :require_authentication, :except => [:index, :show]
   before_action :set_area
   before_action :set_climb, :only => [:show, :edit, :update, :destroy]
   respond_to :json

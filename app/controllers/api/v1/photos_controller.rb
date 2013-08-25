@@ -1,4 +1,5 @@
 class Api::V1::PhotosController < ApplicationController
+  before_filter :require_authentication, :except => [:index, :show]
   before_action :set_climb
   before_action :set_photo, :only => [:show, :edit, :update, :destroy]
   protect_from_forgery :with => :null_session

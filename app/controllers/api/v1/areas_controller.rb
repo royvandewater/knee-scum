@@ -1,4 +1,5 @@
-class Api::V1::AreasController < ApplicationController
+class Api::V1::AreasController < Api::V1::ApiController
+  before_filter :require_authentication, :except => [:index, :show]
   before_action :set_area, :only => [:show, :edit, :update, :destroy]
   respond_to :json
 
