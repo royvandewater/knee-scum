@@ -16,6 +16,12 @@ class KneeScum.TwoPanelView extends Backbone.View
     @$('.modal-dialog').addClass @modal?.modalClass
     @$el
 
+  remove: =>
+    @left?.remove()
+    @right?.remove()
+    @modal?.remove()
+    super
+
   onClickCloseModal: ($event) =>
     $event.preventDefault()
     $event.stopPropagation()

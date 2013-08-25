@@ -3,15 +3,17 @@ class KneeScum.AreaFormView extends Backbone.View
 
   initialize: =>
     @model ?= @collection.build()
+    @listenTo @model, 'invalid', @render
     @listenTo @model, 'destroy', @navigateToAreas
     @listenTo @model, 'sync',    @navigateToArea
 
   context: =>
-    cid:   @cid
-    model: @model.toJSON()
+    cid:    @cid
+    model:  @model.toJSON()
+    errors: @model.validationError
 
   render: =>
-    @$el.html @template model: @model.toJSON(), cid: @cid
+    @$el.html @template @context()
     @$el
 
   events:
@@ -20,7 +22,9 @@ class KneeScum.AreaFormView extends Backbone.View
 
   onClickDelete: ($event) =>
     $event.preventDefault()
-    @model.destroy() if confirm 'Are you sure?'
+    if confirm 'Are you sure?'
+      @stopListening @model, 'sync'
+      @model.destroy()
 
   onSubmit: ($event) =>
     $event.preventDefault()
