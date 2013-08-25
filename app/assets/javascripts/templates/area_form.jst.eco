@@ -9,8 +9,8 @@
     <label for="name-<%= @cid %>" class="col-lg-2 control-label">Name</label>
     <div class="col-lg-10">
       <input type="text" class="form-control" name="name" id="name-<%= @cid %>" placeholder="Name" value="<%= @model.name %>">
-      <% if @errors?.name: %>
-        <span class="help-block text-danger"><%= @errors.name %></span>
+      <% _.each @errors?.name, (error) =>: %>
+        <span class="help-block text-danger"><%= error %></span>
       <% end %>
     </div>
   </div>

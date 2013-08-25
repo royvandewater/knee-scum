@@ -5,6 +5,7 @@ class KneeScum.Router extends Backbone.Router
     @navbarView = new KneeScum.NavbarView()
     $('.navbar').html @navbarView.render()
 
+
   routes:
     'areas/:area_id/climbs/:climb_id/photos/new': 'areaClimbPhotoNew'
     'areas/:area_id/climbs/new':                  'areaClimbNew'

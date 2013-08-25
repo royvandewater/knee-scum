@@ -17,6 +17,7 @@ class KneeScum.TwoPanelView extends Backbone.View
     @$el
 
   remove: =>
+    $('.modal-backdrop').remove()
     @left?.remove()
     @right?.remove()
     @modal?.remove()
@@ -35,10 +36,6 @@ class KneeScum.TwoPanelView extends Backbone.View
     @$('.modal').modal().on 'hidden.bs.modal', @closeModal
     @listenTo @modal, 'closeme', => @$('.modal').modal 'hide'
     @adjustModalSize()
-
-  remove: =>
-    $('.modal-backdrop').remove()
-    super
 
   adjustModalSize: =>
     return unless @modal?.fillScreen

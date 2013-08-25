@@ -4,8 +4,8 @@ class KneeScum.AreaFormView extends Backbone.View
   initialize: =>
     @model ?= @collection.build()
     @listenTo @model, 'invalid', @render
-    @listenTo @model, 'destroy', @navigateToAreas
-    @listenTo @model, 'sync',    @navigateToArea
+    @listenToOnce @model, 'destroy', @navigateToAreas
+    @listenToOnce @model, 'sync',    @navigateToArea
 
   context: =>
     cid:    @cid
@@ -15,6 +15,9 @@ class KneeScum.AreaFormView extends Backbone.View
   render: =>
     @$el.html @template @context()
     @$el
+
+  remove: =>
+    super
 
   events:
     'click .delete': 'onClickDelete'
