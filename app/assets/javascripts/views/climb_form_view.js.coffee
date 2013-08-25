@@ -3,12 +3,14 @@ class KneeScum.ClimbFormView extends Backbone.View
 
   initialize: =>
     @model ?= @collection.build()
-    @listenTo @model, 'destroy', @navigateToAreaClimbs
-    @listenTo @model, 'sync',    @navigateToAreaClimb
+    @listenTo @model, 'invalid', @render
+    @listenToOnce @model, 'destroy', @navigateToAreaClimbs
+    @listenToOnce @model, 'sync',    @navigateToAreaClimb
 
   context: =>
-    cid:   @cid
-    model: @model.toJSON()
+    cid:    @cid
+    model:  @model.toJSON()
+    errors: @model.validationError
 
   render: =>
     @$el.html @template @context()

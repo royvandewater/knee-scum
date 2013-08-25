@@ -1,11 +1,9 @@
 class KneeScum.Area extends Backbone.Model
-
   initialize: (options={}) =>
     @climbs = new KneeScum.Climbs options.climbs
     @on 'change:climbs_url', @updateClimbsUrl
     @on 'error', @updateValidationError
     @updateClimbsUrl()
-    Backbone.history.on 'route', (args...) => console.log @_events
 
   validate: (attributes, options={}) =>
     errors = {}
@@ -18,4 +16,4 @@ class KneeScum.Area extends Backbone.Model
   updateValidationError: (model, xhr, options) =>
     return unless xhr.status == 422
     @validationError = xhr.responseJSON.errors
-    @trigger 'invalid'
+    @trigger 'invalid', this, @validationError

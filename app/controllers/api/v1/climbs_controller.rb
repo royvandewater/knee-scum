@@ -1,4 +1,4 @@
-class Api::V1::ClimbsController < ApplicationController
+class Api::V1::ClimbsController < Api::V1::ApiController
   before_filter :require_authentication, :except => [:index, :show]
   before_action :set_area
   before_action :set_climb, :only => [:show, :edit, :update, :destroy]
