@@ -12,4 +12,6 @@ class KneeScum.Photos extends Backbone.Collection
   build: =>
     model = new @model
     model.urlRoot = @url
+    @listenToOnce model, 'sync', (model) =>
+      @add model
     model

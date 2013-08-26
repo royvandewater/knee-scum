@@ -10,7 +10,7 @@ class KneeScum.Climb extends Backbone.Model
     errors = {}
     errors.name       = ["Can't be blank"] unless attributes.name?.length > 0
     errors.difficulty = ["Can't be blank"] unless attributes.difficulty?.length > 0
-    errors unless _(errors).isEmpty() # only return
+    errors unless _(errors).isEmpty() # only return if there are errors
 
   updatePhotos: =>
     @photos.add @get 'photos'

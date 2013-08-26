@@ -3,9 +3,12 @@ class KneeScum.PhotoFormView extends Backbone.View
 
   initialize: (climb: @climb) =>
     @model ?= @collection.build()
+    @listenTo @model, 'invalid', @render
+    @listenToOnce @model, 'sync', @close
 
   context: =>
     model:           @model.toJSON()
+    errors:          @model.validationError
     close_form_path: @areaClimbPath()
 
   render: =>
@@ -38,9 +41,7 @@ class KneeScum.PhotoFormView extends Backbone.View
       dataType: 'json'
       processData: false
       success: (data) =>
-        @model.set data
-        @collection.add @model
-        @close()
+        @model.save data
 
   close: =>
     Backbone.history.navigate @areaClimbPath(), trigger: true

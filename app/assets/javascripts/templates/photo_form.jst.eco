@@ -5,17 +5,23 @@
   </div>
 
   <div class="modal-body">
-    <div class="form-group">
+    <div class="form-group <%= 'has-error' if @errors?.title %>">
       <label for="title-<%= @cid %>" class="col-lg-2 control-label">Title</label>
       <div class="col-lg-10">
         <input type="text" class="form-control" name="title" id="title-<%= @cid %>" placeholder="Title" value="<%= @model.title %>">
+        <% _.each @errors?.title, (error) =>: %>
+          <span class="help-block text-danger"><%= error %></span>
+        <% end %>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group <%= 'has-error' if @errors?.file %>">
       <label for="file-<%= @cid %>" class="col-lg-2 control-label">File</label>
       <div class="col-lg-10">
         <input type="file" class="form-control" name="file" id="file-<%= @cid %>" >
+        <% _.each @errors?.file, (error) =>: %>
+          <span class="help-block text-danger"><%= error %></span>
+        <% end %>
       </div>
     </div>
   </div>
