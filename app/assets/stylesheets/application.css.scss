@@ -18,6 +18,29 @@
 }
 
 .extra-wide {
+  .modal-content {
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+  }
+
+  .modal-header {
+    color: white;
+    border: none;
+    padding-bottom: 0;
+
+    .close {
+      background-color: rgba(0,0,0,0);
+      opacity: 0.7;
+      color: white;
+      &:hover {
+        opacity: 1;
+      }
+      &:active {
+        background-color: rgba(0,0,0,0);
+      }
+    }
+  }
+
   .modal-body {
     padding: 0px;
 
@@ -28,8 +51,9 @@
   }
 
   .modal-footer {
-    padding: 5px 10px;
+    padding: 0px 10px 5px;
     margin: 0;
+    border: none;
 
     .pager {
       margin: 0;
@@ -44,6 +68,7 @@
 
       .col-lg-12 {
         padding-left: 15px;
+        padding-right: 15px;
       }
     }
   }
