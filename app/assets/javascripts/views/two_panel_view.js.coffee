@@ -31,6 +31,9 @@ class KneeScum.TwoPanelView extends Backbone.View
   closeModal: =>
     @modal.close()
 
+  scrollTo: =>
+    $.scrollTo (@right ? @left)?.$el
+
   show_modal: =>
     return unless @modal?
     @$('.modal').modal().on 'hidden.bs.modal', @closeModal

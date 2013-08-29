@@ -105,4 +105,5 @@ class KneeScum.Router extends Backbone.Router
     @view?.remove()
     @view = new KneeScum.TwoPanelView options
     $('#main-content').html @view.render()
+    @view.scrollTo()
     @view.show_modal()

@@ -13,8 +13,8 @@
  *= require_tree .
  */
 
-body {
-  padding-top: 50px;
+.excessive-padding {
+  margin-bottom: 1000px;
 }
 
 .extra-wide {
@@ -22,7 +22,8 @@ body {
     padding: 0px;
 
     .col-lg-12 {
-      padding-left: 7px;
+      padding-left: 20px;
+      padding-right: 0;
     }
   }
 
