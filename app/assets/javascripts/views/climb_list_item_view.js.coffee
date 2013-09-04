@@ -3,6 +3,9 @@ class KneeScum.ClimbListItemView extends Backbone.View
   className: 'list-group-item'
   template: JST['templates/climb_list_item']
 
+  initialize: =>
+    @listenTo @model, 'change', @render
+
   render: =>
     @$el.addClass('active') if @active
     @$el.attr href: @areaClimbUrl()
