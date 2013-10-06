@@ -35,7 +35,6 @@ class KneeScum.TwoPanelView extends Backbone.View
     position = (@right ? @left)?.$el.offset().top
     position = 0 if position < 0
     position = 0 if position < $(window).height() + $(window).scrollTop()
-    console.log position
     $.scrollTo position, 500
 
   show_modal: =>

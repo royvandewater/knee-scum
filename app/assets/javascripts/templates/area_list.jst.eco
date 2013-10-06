@@ -1,7 +1,16 @@
 <h1>Arizona</h1>
 
+<% if window.admin: %>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="btn-group">
+        <a href="<%= @new_climb_path %>" class="new  glyphicon glyphicon-file   btn btn-default"></a>
+      </div>
+    </div>
+  </div>
+
+  <br>
+<% end %>
+
 <div class="list-group">
 </div>
-
-<a href="<%= @new_area_path %>" class="btn btn-default new">Add Area</a>
-

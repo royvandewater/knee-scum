@@ -1,9 +1,11 @@
-class KneeScum.Router extends Backbone.Router
+class KneeScum.AreasRouter extends Backbone.Router
   initialize: =>
-    @areas = new KneeScum.Areas()
-    @areas.fetch()
+    @collection = new KneeScum.Areas()
+    @collection.fetch()
     @navbarView = new KneeScum.NavbarView()
     $('.navbar').html @navbarView.render()
+    @on 'route', =>
+      window.admin = true if url '?admin'
 
 
   routes:
@@ -20,23 +22,23 @@ class KneeScum.Router extends Backbone.Router
 
   areas: =>
     @twoPanel
-      left: new KneeScum.AreaListView collection: @areas
+      left: new KneeScum.AreaListView collection: @collection
 
   areaNew: =>
     @twoPanel
-      left:  new KneeScum.AreaListView collection: @areas
-      right: new KneeScum.AreaFormView collection: @areas
+      left:  new KneeScum.AreaListView collection: @collection
+      right: new KneeScum.AreaFormView collection: @collection
 
   areaEdit: (areaId) =>
-    @areas.whenFetched =>
-      area = @areas.get areaId
+    @collection.whenFetched =>
+      area = @collection.get areaId
       @twoPanel
-        left:  new KneeScum.AreaListView collection: @areas, selected_area: area
-        right: new KneeScum.AreaFormView collection: @areas, model: area
+        left:  new KneeScum.AreaListView collection: @collection, selected_area: area
+        right: new KneeScum.AreaFormView collection: @collection, model: area
 
   areaClimbs: (areaId) =>
-    @areas.whenFetched =>
-      area   = @areas.get areaId
+    @collection.whenFetched =>
+      area   = @collection.get areaId
       climbs = area.climbs
       climbs.fetch()
       @twoPanel
@@ -44,8 +46,8 @@ class KneeScum.Router extends Backbone.Router
         right: new KneeScum.AreaView model: area
 
   areaClimbNew: (areaId) =>
-    @areas.whenFetched =>
-      area = @areas.get areaId
+    @collection.whenFetched =>
+      area = @collection.get areaId
       climbs = area.climbs
       climbs.fetch()
       @twoPanel
@@ -53,8 +55,8 @@ class KneeScum.Router extends Backbone.Router
         right: new KneeScum.ClimbFormView collection: climbs
 
   areaClimb: (areaId, climbId) =>
-    @areas.whenFetched =>
-      area = @areas.get areaId
+    @collection.whenFetched =>
+      area = @collection.get areaId
       climbs = area.climbs
       climbs.fetch()
       climbs.whenFetched =>
@@ -64,8 +66,8 @@ class KneeScum.Router extends Backbone.Router
           right: new KneeScum.ClimbView     model: climb
 
   areaClimbEdit: (areaId, climbId) =>
-    @areas.whenFetched =>
-      area = @areas.get areaId
+    @collection.whenFetched =>
+      area = @collection.get areaId
       climbs = area.climbs
       climbs.fetch()
       climbs.whenFetched =>
@@ -75,8 +77,8 @@ class KneeScum.Router extends Backbone.Router
           right: new KneeScum.ClimbFormView model: climb, collection: climbs
 
   areaClimbPhotoNew: (areaId, climbId) =>
-    @areas.whenFetched =>
-      area   = @areas.get areaId
+    @collection.whenFetched =>
+      area   = @collection.get areaId
       climbs = area.climbs
       climbs.fetch()
       climbs.whenFetched =>
@@ -87,8 +89,8 @@ class KneeScum.Router extends Backbone.Router
           modal: new KneeScum.PhotoFormView collection: climb.photos, climb: climb
 
   areaClimbPhoto: (areaId, climbId, photoId) =>
-    @areas.whenFetched =>
-      area   = @areas.get areaId
+    @collection.whenFetched =>
+      area   = @collection.get areaId
       climbs = area.climbs
       climbs.fetch()
       climbs.whenFetched =>

@@ -30,12 +30,14 @@
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-8">
-      <button type="submit" class="btn btn-primary">Save Climb</button>
-    </div>
-    <div class="col-lg-2">
       <% if @model.id : %>
-        <button class="btn btn-danger delete pull-right">Delete Climb</button>
+        <a class="btn btn-lg btn-danger delete" title="Delete">
+          <span class="glyphicon glyphicon-trash"></span>
+        </a>
       <% end %>
+      <button type="submit" class="btn btn-lg btn-primary" title="Save">
+        <span class="glyphicon glyphicon-floppy-save"></span>
+      </button>
     </div>
   </div>
 </form>

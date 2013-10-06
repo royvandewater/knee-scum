@@ -2,10 +2,19 @@
   <h1>
     <%= @model.name %>
     <span class="badge"><%= @model.difficulty %></span>
-    <small>
-      <a href="<%= @edit_area_path %>" class="edit glyphicon glyphicon-pencil"></a>
-    </small>
   </h1>
+
+  <% if window.admin: %>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="btn-group">
+          <a href="<%= @edit_area_path %>" class="edit glyphicon glyphicon-pencil btn btn-default"></a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <br>
 
   <p><%= @model.description %></p>
 

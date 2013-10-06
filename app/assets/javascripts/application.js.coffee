@@ -14,6 +14,7 @@
 #= require jquery_ujs
 #= require jquery.iframe-transport
 #= require jquery.remotipart
+#= require url
 #= require bootstrap
 #= require ./underscore
 #= require ./backbone
@@ -23,5 +24,5 @@
 window.KneeScum = {}
 
 $ -> # Executed after all JS has been loaded
-  window.router = new window.KneeScum.Router()
+  window.router = new window.KneeScum.AreasRouter()
   Backbone.history.start pushState: true

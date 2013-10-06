@@ -1,9 +1,19 @@
 <h3>Photos</h3>
 
+<% if window.admin: %>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="btn-group">
+        <a href="<%= @new_climb_path %>" class="new  glyphicon glyphicon-file   btn btn-default"></a>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<br>
+
 <div class="gallery row">
 </div>
-
-<a href="<%= @new_photo_path %>" class="btn btn-default new">Add Photo</a>
 
 <div class="excessive-padding">
 </div>
