@@ -16,6 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', :platforms => :ruby
 
 gem 'active_model_serializers'
+gem 'bootstrap-sass', :git => 'https://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
 
 group :development, :test do
   gem 'debugger'

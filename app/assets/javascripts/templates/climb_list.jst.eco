@@ -1,12 +1,17 @@
 <h1>
   <%= @model.name %>
-  <small>
-    <a href="<%= @edit_area_path %>" class="edit glyphicon glyphicon-pencil"></a>
-  </small>
 </h1>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="btn-group">
+      <a href="<%= @edit_area_path %>" class="edit glyphicon glyphicon-pencil btn btn-default"></a>
+      <a href="<%= @new_climb_path %>" class="new  glyphicon glyphicon-file   btn btn-default"></a>
+    </div>
+  </div>
+</div>
+
+<br>
 
 <div class="list-group">
 </div>
-
-<a href="<%= @new_climb_path %>" class="btn btn-default new">Add Climb</a>
-
