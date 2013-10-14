@@ -4,6 +4,7 @@ class ClimbSerializer < ActiveModel::Serializer
              :area_id,
              :description,
              :difficulty,
-             :name
+             :name,
+             :protection
   has_many :photos
 end

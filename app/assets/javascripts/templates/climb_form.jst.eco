@@ -36,6 +36,13 @@
   </div>
 
   <div class="form-group">
+    <label for="protection-<%= @cid %>" class="col-lg-2 control-label">Protection</label>
+    <div class="col-lg-10">
+      <textarea class="form-control" rows="5" name="protection" id="protection-<%= @cid %>"><%= @model.protection %></textarea>
+    </div>
+  </div>
+
+  <div class="form-group">
     <div class="col-lg-offset-2 col-lg-8">
       <% if @model.id : %>
         <a class="btn btn-lg btn-danger delete" title="Delete">

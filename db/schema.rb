@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131014021230) do
+ActiveRecord::Schema.define(version: 20131014022508) do
 
   create_table "areas", force: true do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20131014021230) do
     t.text     "description"
     t.integer  "area_id"
     t.text     "approach"
+    t.text     "protection"
   end
 
   add_index "climbs", ["area_id"], name: "index_climbs_on_area_id", using: :btree

@@ -22,6 +22,9 @@
   <h3>Approach</h3>
   <p><%= @model.approach %></p>
 
+  <h3>Protection</h3>
+  <p><%= @model.protection %></p>
+
   <div class="container panel photos-container">
   </div>
 <% else: %>

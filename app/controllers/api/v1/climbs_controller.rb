@@ -40,7 +40,7 @@ class Api::V1::ClimbsController < Api::V1::ApiController
   end
 
   def climb_params
-    params.require(:climb).permit(:name, :difficulty, :description, :approach)
+    params.require(:climb).permit(:approach, :difficulty, :description, :name, :protection)
   end
 
   def climb_url(climb)
