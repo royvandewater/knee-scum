@@ -20,6 +20,10 @@
 .gallery .thumbnail-container {
   padding-left: 1px;
   padding-right: 1px;
+
+  .thumbnail {
+    padding: 0;
+  }
 }
 
 .extra-wide {
