@@ -1,4 +1,9 @@
 class ClimbSerializer < ActiveModel::Serializer
-  attributes :id, :area_id, :name, :difficulty, :description
-  has_many :photos, :serializer => PhotoSerializer
+  attributes :id,
+             :approach,
+             :area_id,
+             :description,
+             :difficulty,
+             :name
+  has_many :photos
 end

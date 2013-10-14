@@ -29,9 +29,10 @@ class KneeScum.ClimbFormView extends Backbone.View
     @model.save @formData()
 
   formData: =>
-    name:        @$('[name=name]').val()
-    difficulty:  @$('[name=difficulty]').val()
+    approach:    @$('[name=approach]').val()
     description: @$('[name=description]').val()
+    difficulty:  @$('[name=difficulty]').val()
+    name:        @$('[name=name]').val()
 
   areaClimbUrl: =>
     KneeScum.Paths.areaClimb @model.get('area_id'), @model.get('id')

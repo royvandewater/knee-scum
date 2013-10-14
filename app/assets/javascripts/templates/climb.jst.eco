@@ -16,7 +16,11 @@
 
   <br>
 
+  <h3>Description</h3>
   <p><%= @model.description %></p>
+
+  <h3>Approach</h3>
+  <p><%= @model.approach %></p>
 
   <div class="container panel photos-container">
   </div>
