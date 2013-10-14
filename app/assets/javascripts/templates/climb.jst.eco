@@ -19,11 +19,15 @@
   <h3>Description</h3>
   <p><%= @model.description %></p>
 
-  <h3>Approach</h3>
-  <p><%= @model.approach %></p>
+  <% unless _.isEmpty(@model.approach): %>
+    <h3>Approach</h3>
+    <p><%= @model.approach %></p>
+  <% end %>
 
-  <h3>Protection</h3>
-  <p><%= @model.protection %></p>
+  <% unless _.isEmpty(@model.approach): %>
+    <h3>Protection</h3>
+    <p><%= @model.protection %></p>
+  <% end %>
 
   <div class="container panel photos-container">
   </div>

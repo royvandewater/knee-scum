@@ -1,6 +1,6 @@
 class KneeScum.PhotoThumbnailView extends Backbone.View
   template: JST['templates/photo_thumbnail']
-  className: 'col-lg-3'
+  className: 'col-lg-3 thumbnail-container'
 
   context: =>
     model: @model.toJSON()
@@ -11,7 +11,7 @@ class KneeScum.PhotoThumbnailView extends Backbone.View
     @$el
 
   events:
-    'click .thumbnail': 'onClickThumbnail'
+    'click a': 'onClickThumbnail'
 
   onClickThumbnail: ($event) =>
     $event.preventDefault()
