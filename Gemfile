@@ -18,8 +18,6 @@ gem 'therubyracer', :platforms => :ruby
 gem 'active_model_serializers'
 gem 'bootstrap-sass', :git => 'https://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
 
-gem 'rails_backbone_generators', :path => '~/Projects/rails_backbone_generators'
-
 group :development, :test do
   gem 'debugger'
   gem 'coffee-rails-source-maps'
