@@ -6,6 +6,11 @@ GIT
     bootstrap-sass (3.0.0.0)
       sass (~> 3.2)
 
+PATH
+  remote: ~/Projects/rails_backbone_generators
+  specs:
+    rails_backbone_generators (0.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -173,6 +178,7 @@ DEPENDENCIES
   mysql2
   paperclip
   rails (= 4.0.0)
+  rails_backbone_generators!
   remotipart
   sass-rails (~> 4.0.0)
   sdoc
