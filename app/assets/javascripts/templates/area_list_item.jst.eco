@@ -1,1 +1,6 @@
 <%= @model.name %>
+<% if @model.latitude? && @model.longitude? : %>
+  <span class="text-muted">
+    (<%= @model.latitude %>, <%= @model.longitude %>)
+  </span>
+<% end %>
